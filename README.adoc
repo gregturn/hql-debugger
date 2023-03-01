@@ -8,6 +8,23 @@ It contains a copy of Hibernate's HQL grammar and parser source files, allowing 
 
 See [HISTORY].
 
+== How to debug HQL queries
+
+. Clone this project.
+. Import into your own IDE.
+
+For your specific IDE, continue with suitable instructions below.
+
+=== IntelliJ
+
+. Ensure you have the https://plugins.jetbrains.com/plugin/7358-antlr-v4[ANTLR v4 IntelliJ] plugin installed.
+. Open `OfficialHqlParser.g4`.
+. Select `statement` rule.
+. Right-click and select on `Test Rule statement`.
+. In the newly opened *ANTLR Preview* pane, enter your query in the left-hand box. Observe the output in the right-hand box.
+
+If you wish to test a fragment of your statement, you are always free to run a different rule from the parser file.
+
 == License
 
 HQL Debugger is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
