@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.greglturnquist</groupId>
+    <artifactId>hql-debugger</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>HQL Debugger</name>
+    <description>Tool to debug HQL debuggers using their official parser. FOR DEV PURPOSES ONLY--NOT FOR RELEASE</description>
+
+    <developers>
+        <developer>
+            <id>gturnquist</id>
+            <name>Greg Turnquist</name>
+            <email>gturnquist(at)vmware.com</email>
+            <organization>VMware, Inc.</organization>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com:gregturn/hql-debugger.git</connection>
+        <developerConnection>scm:git:git@github.com:gregturn/hql-debugger.git</developerConnection>
+        <url>https://github.com/gregturn/hql-debugger</url>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/spring-projects/spring-data-jpa/issues</url>
+    </issueManagement>
+
+    <properties>
+        <source.level>17</source.level>
+        <antlr>4.11.1</antlr>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>${antlr}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>${antlr}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <visitor>true</visitor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>maven-replacer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>target/generated-sources/antlr4/**/*.java</include>
+                    </includes>
+                    <variableTokenValueMap>
+                        public class=class,public interface=interface
+                    </variableTokenValueMap>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

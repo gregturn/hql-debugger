@@ -1,0 +1,5 @@
+= History of HQL
+
+This is a log of when the parser was copied, kept for historical purposes.
+
+* https://github.com/hibernate/hibernate-orm/commit/b16ad226ba6216d1206a02095952a057ae3b6874#diff-4fc61f580b8c208936071a7d4e9d6fbde03c9227829883efbe502559e509bc85[First copied]

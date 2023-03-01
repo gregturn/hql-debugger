@@ -1,0 +1,15 @@
+= HQL Debugger
+
+HQL Debugger is a development tool used to debug HQL queries.
+It contains a copy of Hibernate's HQL grammar and parser source files, allowing you to use IDE ANTLR tools to test out queries and validate them.
+
+* This software is not for general release given the original parser is LGPL.
+* This software is copied but not run through any form of automation process, so it COULD be out-of-date based on updates to Hibernate.
+
+See [HISTORY].
+
+== License
+
+HQL Debugger is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
+
+HQL Debugger contains a copy of Hibernate's HQL parser grammar and lexer, which are LGPL.
